@@ -27,6 +27,7 @@ function onClickedEstimatePrice() {
   var estPrice = document.getElementById("uiEstimatedPrice");
 
    var url = "https://predictprice112.herokuapp.com/predict_home_price"; //Use this if you are NOT using nginx which is first 7 tutorials
+   
 // var url = "/api/predict_home_price"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
 
   $.post(url, {
@@ -36,6 +37,7 @@ function onClickedEstimatePrice() {
       location: location.value
   },function(data, status) {
       console.log(data.estimated_price);
+      console.log(data)
       estPrice.innerHTML = "<h2>" + data.estimated_price.toString() + " Lakh</h2>";
       console.log(status);
   });
@@ -47,6 +49,7 @@ function onPageLoad() {
  //var url = "/api/get_location_names"; // Use this if  you are using nginx. i.e tutorial 8 and onwards
   $.get(url,function(data, status) {
       console.log("got response for get_location_names request");
+      console.log(data);
       if(data) {
           var locations = data.locations;
           var uiLocations = document.getElementById("uiLocations");
